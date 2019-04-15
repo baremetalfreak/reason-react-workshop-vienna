@@ -15,15 +15,15 @@ function s(prim) {
 
 function App(Props) {
   var header = Props.header;
-  var match = UseMessageToast$ReactTemplate.hook(undefined, undefined, /* [] */0);
+  var match = UseMessageToast$ReactTemplate.hook(undefined, undefined, /* array */[]);
   var addMessage = match[1];
   return React.createElement("div", undefined, React.createElement("h1", undefined, header), React.createElement("button", {
                   onClick: (function (param) {
                       return Curry._1(addMessage, "--- Message --------" + Date.now().toString());
                     })
-                }, "Add Message"), React.createElement("ul", undefined, Belt_List.toArray(Belt_List.map(match[0], (function (message) {
-                            return React.createElement("li", undefined, message[/* text */1]);
-                          })))), React.createElement("h1", undefined, "Cities"), React.createElement("ul", undefined, Belt_List.toArray(Belt_List.map(Data$ReactTemplate.cities, (function (city) {
+                }, "Add Message"), React.createElement("ul", undefined, match[0].map((function (message) {
+                        return React.createElement("li", undefined, message);
+                      }))), React.createElement("h1", undefined, "Cities"), React.createElement("ul", undefined, Belt_List.toArray(Belt_List.map(Data$ReactTemplate.cities, (function (city) {
                             return React.createElement("li", {
                                         key: city[/* id */0]
                                       }, city[/* name */1]);

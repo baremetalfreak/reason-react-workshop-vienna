@@ -4,7 +4,7 @@ let s = React.string;
 [@react.component]
 [@genType]
 let make = (~header) => {
-  let (messages, addMessage) = UseMessageToast.hook([]);
+  let (messages, addMessage) = UseMessageToast.hook([||]);
   <div>
     <h1> header->s </h1>
     <button
@@ -16,10 +16,7 @@ let make = (~header) => {
       "Add Message"->s
     </button>
     <ul>
-      {messages
-       ->List.map(message => <li> message.text->s </li>)
-       ->List.toArray
-       ->React.array}
+      {Js.Array.map(message => <li> message->s </li>, messages)->React.array}
     </ul>
     <h1> "Cities"->s </h1>
     <ul>

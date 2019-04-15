@@ -2,7 +2,7 @@
 
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
-import * as Belt_List from "bs-platform/lib/es6/belt_List.js";
+import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 
 function not_(fn, x) {
   return !Curry._1(fn, x);
@@ -13,7 +13,11 @@ function expired(now, message) {
 }
 
 function nextExpire(messages) {
-  return Belt_List.get(messages, 0);
+  var match = messages.length > 0;
+  if (match) {
+    return Caml_option.some(messages[0]);
+  }
+  
 }
 
 function hook($staropt$star, $staropt$star$1, initialMessages) {
@@ -27,7 +31,7 @@ function hook($staropt$star, $staropt$star$1, initialMessages) {
   var setMessages = match[1];
   var messages = match[0];
   React.useEffect((function () {
-          var match = Belt_List.get(messages, 0);
+          var match = nextExpire(messages);
           if (match !== undefined) {
             var timeoutId = setTimeout((function (param) {
                     return Curry._1(setMessages, (function (messages) {
@@ -35,7 +39,7 @@ function hook($staropt$star, $staropt$star$1, initialMessages) {
                                   var partial_arg$1 = function (param) {
                                     return partial_arg > param[/* expires */0];
                                   };
-                                  return Belt_List.keep(messages, (function (param) {
+                                  return messages.filter((function (param) {
                                                 return !Curry._1(partial_arg$1, param);
                                               }));
                                 }));
@@ -47,19 +51,18 @@ function hook($staropt$star, $staropt$star$1, initialMessages) {
           }
           
         }), /* array */[messages]);
-  var addMessage = function (text) {
+  var addMessage = function (messageText) {
     return Curry._1(setMessages, (function (messages) {
-                  return Belt_List.concat(messages, /* :: */[
-                              /* record */[
+                  return messages.concat(/* array */[/* record */[
                                 /* expires */Date.now() + ttl,
-                                /* text */text
-                              ],
-                              /* [] */0
-                            ]);
+                                /* text */messageText
+                              ]]);
                 }));
   };
   return /* tuple */[
-          messages,
+          messages.map((function (msg) {
+                  return msg[/* text */1];
+                })),
           addMessage
         ];
 }
