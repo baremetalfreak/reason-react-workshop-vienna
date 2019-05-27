@@ -54,8 +54,10 @@ type person = {. name: string}; /* this does not compile to simple JS object */
 /* type jsPerson = Js.t({. name: string}); */
 type jsPerson = {. "name": string};
 
+/* let karel = [%bs.obj {name: "Pepa"}]; */
 let karel = {"name": "Karel"};
 let pepa = {"name": "Pepa"};
+let empty = Js.Obj.empty(); /* to get an empty javascript object "{. }" */
 
 type openPerson('a) = {.. name: string} as 'a;
 
