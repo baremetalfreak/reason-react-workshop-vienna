@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "css-loader": "^2.1.1",
+    "downshift": "^3.2.10",
     "mini-css-extract-plugin": "^0.6.0",
     "react": "16.8.6",
     "react-dom": "16.2.0",

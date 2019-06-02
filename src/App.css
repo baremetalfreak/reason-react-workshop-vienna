@@ -55,11 +55,11 @@
   }
 }
 
-body {
-  marign: 0;
-  background: #101010;
-  background-size: cover;
-}
+/* body { */
+/*   marign: 0; */
+/*   background: #101010; */
+/*   background-size: cover; */
+/* } */
 
 .container {
   width: 100vw;

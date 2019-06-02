@@ -2,16 +2,11 @@
 
 import * as React from "react";
 import * as ReactDOMRe from "reason-react/src/ReactDOMRe.js";
-import * as IndexGen from "./Index.gen";
+import * as SelectExample$ReactTemplate from "./SelectExample.bs.js";
 
-var make = IndexGen.make;
-
-var TSApp = /* module */[/* make */make];
-
-ReactDOMRe.renderToElementWithId(React.createElement(make, { }), "root");
+ReactDOMRe.renderToElementWithId(React.createElement(SelectExample$ReactTemplate.make, { }), "root");
 
 export {
-  TSApp ,
   
 }
-/* make Not a pure module */
+/*  Not a pure module */
